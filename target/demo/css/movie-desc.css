@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: Raleway;
+}
+
+body,
+header,
+main,
+footer,
+div,
+h1,
+h2,
+h3,
+ul,
+li,
+span,
+input,
+button,
+a,
+i{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+body {
+    background-color: #2b3236;
+}
+
+/* --- MAIN --- */
+
+.pelicula-container {
+    display: flex;
+    position: relative;
+    justify-items: center;
+    align-items: center;
+    color:#eee;
+    gap: 20px;
+    margin: 50px 30px 0 30px;
+}
+
+.p-img{
+    border-radius: 20px;
+    height: clamp(300px,50dvh,500px);
+}
+
+.p-title{
+    font-size: clamp(1rem,4rem,8rem);
+}
+
+.p-desc{
+    font-size: clamp(.5rem,1.3rem,5rem);
+    text-wrap: pretty;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.movie-info h2::first-letter{
+    font-size: 2rem;
+    color: white;
+}
+
+.movie-stats{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px;
+    align-items: start;
+}
+
+.movie-stats span{
+    color: gold;
+    text-wrap: nowrap;
+}
+
+/* -- SIMILARES -- */
+
+.title-similares {
+    display: grid;
+    place-content: center;
+    margin-top: 30px;
+    font-size: 2rem;
+}
+
+.title-similares h2 {
+    transition: border-bottom .4s ease-in-out;
+    color: white;
+}
+
+.title-similares:hover h2 {
+    border-bottom: 1px solid #2b90dd;
+}
+
+
+.similares-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 30px;
+    margin: 50px 30px;
+}
+
+.card {
+    /* animacion de entrada  */
+    position: relative;
+    animation-timeline: view;
+    animation: reveal linear both;
+    animation-range: entry 70% cover 40%;
+    view-timeline-name: --subjectReveal;
+    animation-timeline: --subjectReveal;
+    /* fin de animacion  */
+    border-radius: 30px;
+}
+
+/* --- animacion entrada --- */
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        scale: .5;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.card img {
+    height: 280px;
+    width: auto;
+    border-radius: 30px;
+    object-view-box: inset(0%);
+    transition: all .3s ease;
+}
+
+.card:hover img {
+    object-view-box: inset(8% 8% 8% 8%);
+    filter: brightness(1.2) grayscale(50%) drop-shadow(0 0 10px black);
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    color: #2b90dd;
+    text-wrap: pretty;
+    text-align: center;
+}
+
+
+
+@media screen and (width < 820px){
+    .pelicula-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .movie-stats{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .movie-stats span{
+        text-wrap: wrap;
+    }
+    
+
+    .p-img{
+        height: 250px;
+    }
+
+    .p-title{
+        font-size: clamp(1rem,4rem,8rem);
+    }
+    
+    .p-desc{
+        font-size: clamp(.5rem,1rem,6rem);
+        text-wrap: pretty;
+    }
+
+    .title-similares h2{
+        font-size: clamp(1rem,2rem,8rem);
+    }
+
+    
+}
